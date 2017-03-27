@@ -1,3 +1,3 @@
 
-# Generate module project
-pon-scaffold module "my-projects/my-custom-module"
+# Generate task project
+pon-scaffold task "my-projects/my-custom-task"
