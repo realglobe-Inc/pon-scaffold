@@ -1,0 +1,51 @@
+{
+  "name": "~~~~package_name~~~~",
+  "version": "1.0.0",
+  "description": "~~~~package_description~~~~",
+  "main": "lib",
+  "browser": "shim/browser",
+  "scripts": {
+    "prepare": "node ./ci/build.js && node ./ci/shim.js ",
+    "test": "node ./ci/test.js"
+  },
+  "repository": "~~~~github_repository~~~~",
+  "keywords": [
+    "Pon"
+  ],
+  "author": {
+    "name": "~~~~author_name~~~~",
+    "email": "~~~~author_email~~~~",
+    "url": "~~~~author_url~~~~"
+  },
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/realglobe-Inc/~~~~package_name~~~~/issues"
+  },
+  "homepage": "https://github.com/realglobe-Inc/~~~~package_name~~~~#readme",
+  "dependencies": {
+    "co": "^4.6.0"
+  },
+  "devDependencies": {
+    "ababel": "^2.0.1",
+    "ababel-es2015": "^2.0.1",
+    "amocha": "^2.0.0",
+    "ape-doc": "^2.0.4",
+    "ape-formatting": "^1.0.2",
+    "ape-releasing": "^4.0.4",
+    "ape-tasking": "^4.0.9",
+    "ape-tmpl": "^5.0.20",
+    "ape-updating": "^4.1.0",
+    "colorprint": "^4.1.0",
+    "coz": "^6.0.20",
+    "injectmock": "^2.0.0",
+    "sg-templates": "^1.4.4",
+    "sugos-travis": "^2.0.7"
+  },
+  "engines": {
+    "node": ">=6",
+    "npm": ">=4"
+  },
+  "publishConfig": {
+    "registry": "https://realglobe.artifactoryonline.com/realglobe/api/npm/npm-local"
+  }
+}

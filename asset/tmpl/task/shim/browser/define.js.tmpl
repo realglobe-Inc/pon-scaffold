@@ -1,0 +1,45 @@
+/**
+ * Define task
+ * @function define
+ * @param {Object} [options={}] - Optional settings
+ * @returns {function} Defined task
+ */
+'use strict';
+
+var _assign = require('babel-runtime/core-js/object/assign');
+
+var _assign2 = _interopRequireDefault(_assign);
+
+var _regenerator = require('babel-runtime/regenerator');
+
+var _regenerator2 = _interopRequireDefault(_regenerator);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var co = require('co');
+
+/** @lends define */
+function define() {
+  var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+  function task(ctx) {
+    return co(_regenerator2.default.mark(function _callee() {
+      return _regenerator2.default.wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+            case 'end':
+              return _context.stop();
+          }
+        }
+      }, _callee, this);
+    }));
+  }
+
+  return (0, _assign2.default)(task,
+  // Define sub tasks here
+  {});
+}
+
+module.exports = define;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImRlZmluZS5qcyJdLCJuYW1lcyI6WyJjbyIsInJlcXVpcmUiLCJkZWZpbmUiLCJvcHRpb25zIiwidGFzayIsImN0eCIsIm1vZHVsZSIsImV4cG9ydHMiXSwibWFwcGluZ3MiOiJBQUFBOzs7Ozs7QUFNQTs7Ozs7Ozs7Ozs7O0FBRUEsSUFBTUEsS0FBS0MsUUFBUSxJQUFSLENBQVg7O0FBRUE7QUFDQSxTQUFTQyxNQUFULEdBQStCO0FBQUEsTUFBZEMsT0FBYyx1RUFBSixFQUFJOztBQUM3QixXQUFTQyxJQUFULENBQWVDLEdBQWYsRUFBb0I7QUFDbEIsV0FBT0wsOEJBQUc7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQSxLQUFILEVBQVA7QUFHRDs7QUFFRCxTQUFPLHNCQUFjSSxJQUFkO0FBQ0w7QUFDQSxJQUZLLENBQVA7QUFJRDs7QUFFREUsT0FBT0MsT0FBUCxHQUFpQkwsTUFBakIiLCJmaWxlIjoiZGVmaW5lLmpzIiwic291cmNlUm9vdCI6ImxpYiIsInNvdXJjZXNDb250ZW50IjpbIi8qKlxuICogRGVmaW5lIHRhc2tcbiAqIEBmdW5jdGlvbiBkZWZpbmVcbiAqIEBwYXJhbSB7T2JqZWN0fSBbb3B0aW9ucz17fV0gLSBPcHRpb25hbCBzZXR0aW5nc1xuICogQHJldHVybnMge2Z1bmN0aW9ufSBEZWZpbmVkIHRhc2tcbiAqL1xuJ3VzZSBzdHJpY3QnXG5cbmNvbnN0IGNvID0gcmVxdWlyZSgnY28nKVxuXG4vKiogQGxlbmRzIGRlZmluZSAqL1xuZnVuY3Rpb24gZGVmaW5lIChvcHRpb25zID0ge30pIHtcbiAgZnVuY3Rpb24gdGFzayAoY3R4KSB7XG4gICAgcmV0dXJuIGNvKGZ1bmN0aW9uICogKCkge1xuXG4gICAgfSlcbiAgfVxuXG4gIHJldHVybiBPYmplY3QuYXNzaWduKHRhc2ssXG4gICAgLy8gRGVmaW5lIHN1YiB0YXNrcyBoZXJlXG4gICAge31cbiAgKVxufVxuXG5tb2R1bGUuZXhwb3J0cyA9IGRlZmluZVxuXG5cbiJdfQ==

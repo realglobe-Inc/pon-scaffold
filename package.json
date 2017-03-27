@@ -1,0 +1,57 @@
+{
+  "name": "pon-scaffold",
+  "version": "1.0.0",
+  "description": "Scaffold generator for pon",
+  "main": "lib",
+  "bin": {
+    "pon-scaffold": "bin/pon-scaffold"
+  },
+  "scripts": {
+    "test": "node ./ci/test.js",
+    "prepare": "node ./ci/build.js && node ./ci/tmplify.js"
+  },
+  "repository": "realglobe-Inc/pon-scaffold",
+  "keywords": [
+    "Pon"
+  ],
+  "author": {
+    "name": "Taka Okunishi",
+    "email": "okunishinish@gmail.com",
+    "url": "http://okunishitaka.com"
+  },
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/realglobe-Inc/pon-scaffold/issues"
+  },
+  "homepage": "https://github.com/realglobe-Inc/pon-scaffold#readme",
+  "dependencies": {
+    "argx": "^3.0.1",
+    "askconfig": "^3.0.5",
+    "co": "^4.6.0",
+    "filemode": "^2.0.3",
+    "gitconfig": "^2.0.3",
+    "tmplconv": "^3.0.9"
+  },
+  "devDependencies": {
+    "ababel": "^2.0.1",
+    "ababel-es2015": "^2.0.1",
+    "amocha": "^2.0.0",
+    "ape-formatting": "^1.0.2",
+    "ape-releasing": "^4.0.4",
+    "ape-tasking": "^4.0.9",
+    "ape-tmpl": "^5.0.20",
+    "ape-updating": "^4.1.0",
+    "coz": "^6.0.20",
+    "injectmock": "^2.0.0",
+    "pon-demo-task": "^1.0.1",
+    "sg-templates": "^1.4.4",
+    "sugos-travis": "^2.0.7"
+  },
+  "engines": {
+    "node": ">=6",
+    "npm": ">=4"
+  },
+  "publishConfig": {
+    "registry": "https://realglobe.artifactoryonline.com/realglobe/api/npm/npm-local"
+  }
+}
