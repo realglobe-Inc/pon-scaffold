@@ -43,7 +43,7 @@
     "ape-updating": "^4.1.0",
     "coz": "^6.0.20",
     "injectmock": "^2.0.0",
-    "pon-assets": "*",
+    "pon-assets": "^1.0.3",
     "pon-demo-task": "^1.0.1",
     "sg-templates": "^1.4.4",
     "sugos-travis": "^2.0.7"
