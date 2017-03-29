@@ -27,7 +27,7 @@ apeTasking.runTasks('tmplify', [
       let demoName = demos[ type ]
       let demoDir = path.dirname(require.resolve(`${demoName}/package.json`))
       let demoPkg = require(`${demoName}/package.json`)
-      let tmplDir = `asset/tmpl/${type}`
+      let tmplDir = `assets/tmpl/${type}`
       yield tmplconv.tmplify(demoDir, tmplDir, {
         clean: true,
         mode: '444',
