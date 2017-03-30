@@ -5,7 +5,7 @@
 'use strict'
 
 const define = require('../lib/define.js')
-const colorprint = require('colorprint')
+const ponContext = require('pon-context')
 const { ok } = require('assert')
 const co = require('co')
 
@@ -21,13 +21,11 @@ describe('define', function () {
   }))
 
   it('Define', () => co(function * () {
-    let ctx = {
-      logger: colorprint.create()
-    }
+    let ctx = ponContext()
     let task = define({})
     ok(task)
 
-    yield Promise.resolve(task())
+    yield Promise.resolve(task(ctx))
   }))
 })
 
