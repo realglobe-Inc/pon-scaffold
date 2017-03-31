@@ -9,7 +9,7 @@ const assert = require('assert')
 const co = require('co')
 
 describe('pon-scaffold', function () {
-  this.timeout(3000)
+  this.timeout(8000)
 
   before(() => co(function * () {
 

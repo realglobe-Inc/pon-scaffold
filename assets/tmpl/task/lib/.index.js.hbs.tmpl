@@ -6,7 +6,7 @@
 
 'use strict'
 
-const define = require('define')
+const define = require('./define')
 
 let lib = define.bind(this)
 
