@@ -40,11 +40,11 @@
     "ape-releasing": "^4.0.4",
     "ape-tasking": "^4.0.9",
     "ape-tmpl": "^5.0.20",
-    "ape-updating": "^4.1.0",
+    "ape-updating": "^4.1.1",
     "coz": "^6.0.20",
     "injectmock": "^2.0.0",
     "pon-assets": "^1.1.1",
-    "pon-demo-task": "^1.0.3",
+    "pon-demo-task": "^2.0.2",
     "sg-templates": "^1.4.4",
     "sugos-travis": "^2.0.7"
   },
