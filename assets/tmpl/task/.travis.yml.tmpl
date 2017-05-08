@@ -2,13 +2,9 @@ language: node_js
 node_js:
 - '6'
 before_install:
-# TODO OSS
-# - npm i npm-cli-login -g
-# - npm-cli-login -u "${NPM_USER}" -p "${NPM_PASSWORD}" -e "${NPM_EMAIL}"
-# - npm who
-- echo "registry = https://realglobe.artifactoryonline.com/realglobe/api/npm/npm-virtual" > $HOME/.npmrc
-- curl -u${NPM_USER}:${NPM_PASSWORD} "https://realglobe.artifactoryonline.com/realglobe/api/npm/auth" >> $HOME/.npmrc
-- cat $HOME/.npmrc
+ - npm i npm-cli-login -g
+ - npm-cli-login -u "${NPM_USER}" -p "${NPM_PASSWORD}" -e "${NPM_EMAIL}"
+ - npm who
 install:
 - npm install jsdoc -g
 - npm install
@@ -19,4 +15,4 @@ script:
 after_success:
 - ./ci/travis/publish.js
 env:
-  secure: "G0AdisPnQdR55q/WZLrZVclwret0fXMRgIyz5+JjeWf2miZH01CbK4fpPtH7SKlOI1yG94OYi32hgarZv+lT/PUR2Y5k85JT94TRKEcyUKJSlnzEn4uf5knAU6EomQ/6yNnuMSta4Lkl/dK8+j39FPkOexrQfYu1U6Y9hRufMzGhh3LkaSIIWFUmD61dLaSaKAIy89xxrV/V0nh8l4YTVHzpynW0ZGIp0qeX+kd54c//jCb0bw60/pQjUWawm3U6d1Ky94Yy50isYG4sixGi2osbM76/aVBvsaaNdGOL0De4aiAw1BJ8QLmMbGjzBa3Q901QnuGXV4O2OWi7j2t1jlnsHBaYZR9rSAKh/0eCacSEdZkNGrIqHh43VnZtGdnSoF3JFrlW3WeCS/XnCtsLRVLzz/92/IzTzF05wePo+4oU1qylPa9MSq1rM5EYOB9aKYKgm3AcQ25jLPCy76vEE5+4c2ddXEAylhHDGG48x3F8U9Bl3THcI/46tkY7K2OzoiwM6TKS95ZjtyWzCuT6lwBPXGyTpIDL301qiRyQo8kFsW1dCgNESDahr8b39ZiICe/gJivLe7XrMGmqFqdgZO8ORouyMhEIe6wwHswE+dZnoc+HTgjNfZ+vNZimgEa7xqjT/CxiWRyP2xVUR0Gy9huwXluIShWh8hKUYlKgOD8="
+  secure: "Gbx8jbRXgkzps0e370lbVbSa0OGFy1nLPerYh+2AWmf4ahsh6q00RIyKEX6WM00Fum46uZGOQ8vYcEBEoQkYvUXWuk+ATG1W8a2ylSE0oGALHnYANv8SLAb+jar5NOvpOeQ8qhYXkeiLrHHsHRV28ppEDwnJZhrF2fi70nwDbNVTMP9oPJTvDSG2xo9joS3HtR8pl6M+zd+6ivdEUndE/uWc8KKdORZDFiH2Gk7PxHYWKMlP9rC+ImsGFRmtZiYtFDUbqiPfYvUBN0VaMWmZ5F0hd4XayijwjwNHN+54waWShZSyQ84RAfUg/bZO52tOzYGgEyAI7o6J2Y9JVYbfPGuKuFWlPZEjr0YABHeXRIjot2lI8gptVzG5KMHnGzDbymVgABS85rCblf96c9yHpoqL9Wiftua+irr90gJdJ140Dd4p2rVJzmuZ0FQJIehrKXaK+XDFsaxksI6hb65Lca+VZdHzIdZ8LXo0PHZRfRvPnJNe7C8jX8MplTnee0pJV6g23wlJBsCONuD3Ub3iNGgJt7Z84kLyfxL5nFKslBf2cyhA1Z2kjLiWmlQnT202h0xcNdbIsh9nNW2zUbcqD1HM/lyYNwmu2dVcNNJdK7LR+hq5hFlI7IbNNa/TWF0AgXUBMy0tIWFAHbcFWeZrcmOOnQ0cMHfoNVW2o8Y6o28="
