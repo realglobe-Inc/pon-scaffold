@@ -16,6 +16,7 @@ const filemode = require('filemode')
 const tmplconv = require('tmplconv')
 
 const demos = {
+  'site': 'pon-demo-site',
   'task': 'pon-demo-task'
 }
 
