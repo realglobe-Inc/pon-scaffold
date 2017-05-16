@@ -35,15 +35,16 @@ apeTasking.runTasks('tmplify', [
         pattern: [
           '**/*.*',
           '.*',
-          '+(ui|src|lib|test)/**/.*.bud',
-          '+(ui|src|lib|test)/**/.*.hbs'
+          '+(client|doc|conf|server|ui|src|lib|test)/**/.*.bud',
+          '+(client|doc|conf|server|ui|src|lib|test)/**/.*.hbs'
         ],
         ignore: [
           '.DS_Store',
           '.svg',
           'ci/demo.js',
           'node_modules/**/*.*',
-          '**/*.map'
+          '**/*.map',
+          '*.lock'
         ],
         data: Object.assign({
           'github_repository': demoPkg.repository.url.split(/\//g).slice(-2).join('/').replace(/\.git$/, ''),
