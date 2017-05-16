@@ -132,6 +132,7 @@ Types
 
 Available template types
 
++ [site](assets/tmpl/site)
 + [task](assets/tmpl/task)
 
 
