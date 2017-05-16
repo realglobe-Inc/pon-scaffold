@@ -44,7 +44,7 @@
     "coz": "^6.0.20",
     "injectmock": "^2.0.0",
     "pon-assets": "^1.1.5",
-    "pon-demo-site": "github:realglobe-inc/pon-demo-site#v1",
+    "pon-demo-site": "github:realglobe-inc/pon-demo-site",
     "pon-demo-task": "github:realglobe-inc/pon-demo-task",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
