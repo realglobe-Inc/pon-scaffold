@@ -44,7 +44,11 @@
     "coz": "^6.0.20",
     "injectmock": "^2.0.0",
     "pon-assets": "^1.1.5",
+    "pon-demo-site": "github:realglobe-inc/pon-demo-site#v1",
     "pon-demo-task": "github:realglobe-inc/pon-demo-task",
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4",
+    "react-router-dom": "^4.1.1",
     "sg-templates": "^1.4.4",
     "sugos-travis": "^2.0.7"
   },
