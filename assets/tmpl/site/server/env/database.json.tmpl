@@ -1,22 +1,17 @@
 {
   "default": {
-    "HOST": "localhost",
     "STORAGE": "var/storage/~~~~package_name~~~~.json",
-    "DIALECT": "json",
-    "SCHEMA": "~~~~package_name~~~~",
-    "USER": "~~~~package_name@cramcase~~~~",
-    "PASSWORD": "~~~~package_name@cramcase~~~~"
+    "DIALECT": "json"
   },
   "production": {
     "HOST": "localhost",
     "DIALECT": "mysql",
     "USERNAME": "~~~~package_name@cramcase~~~~",
-    "PASSWORD": "~~~~package_name@cramcase~~~~"
+    "PASSWORD": "~~~~package_name@cramcase~~~~",
+    "ROOT_USERNAME": "root"
   },
   "test": {
     "DIALECT": "sqlite",
-    "STORAGE": "var/storage/~~~~package_name~~~~.db",
-    "USERNAME": "~~~~package_name@cramcase~~~~test",
-    "PASSWORD": "~~~~package_name@cramcase~~~~test"
+    "STORAGE": "var/storage/~~~~package_name~~~~.db"
   }
 }
