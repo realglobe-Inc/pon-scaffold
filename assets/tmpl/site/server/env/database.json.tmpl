@@ -1,27 +1,22 @@
 {
   "default": {
     "HOST": "localhost",
-    "STORAGE": "var/storage/the-demo-site.json",
+    "STORAGE": "var/storage/~~~~package_name~~~~.json",
     "DIALECT": "json",
-    "SCHEMA": "the-demo-site",
-    "USER": "thedemosite",
-    "PASSWORD": "thedemosite"
+    "SCHEMA": "~~~~package_name~~~~",
+    "USER": "~~~~package_name@cramcase~~~~",
+    "PASSWORD": "~~~~package_name@cramcase~~~~"
   },
   "production": {
     "HOST": "localhost",
     "DIALECT": "mysql",
-    "USER": "thedemosite",
-    "PASSWORD": "thedemosite"
-  },
-  "development": {
-    "DIALECT": "mysql",
-    "USER": "thedemositedev",
-    "PASSWORD": "thedemositedev"
+    "USERNAME": "~~~~package_name@cramcase~~~~",
+    "PASSWORD": "~~~~package_name@cramcase~~~~"
   },
   "test": {
     "DIALECT": "sqlite",
-    "STORAGE": "var/storage/the-demo-site.db",
-    "USER": "thedemositetest",
-    "PASSWORD": "thedemositetest"
+    "STORAGE": "var/storage/~~~~package_name~~~~.db",
+    "USERNAME": "~~~~package_name@cramcase~~~~test",
+    "PASSWORD": "~~~~package_name@cramcase~~~~test"
   }
 }
