@@ -1,14 +1,23 @@
 {
   "default": {
-    "STORAGE": "var/storage/~~~~package_name~~~~.json",
-    "DIALECT": "json"
+    "DIALECT": "mysql",
+    "HOST": "localhost",
+    "PORT": "#{Infra.MYSQL_PUBLISHED_PORT}",
+    "DATABASE": "~~~~package_name@cramcase~~~~_dev",
+    "USERNAME": "~~~~package_name@cramcase~~~~_dev",
+    "PASSWORD": "~~~~package_name@cramcase~~~~_dev",
+    "ROOT_USERNAME": "root",
+    "ROOT_PASSWORD": "root"
   },
   "production": {
-    "HOST": "localhost",
     "DIALECT": "mysql",
+    "HOST": "localhost",
+    "PORT": "#{Infra.MYSQL_PUBLISHED_PORT}",
+    "DATABASE": "~~~~package_name@cramcase~~~~",
     "USERNAME": "~~~~package_name@cramcase~~~~",
     "PASSWORD": "~~~~package_name@cramcase~~~~",
-    "ROOT_USERNAME": "root"
+    "ROOT_USERNAME": "root",
+    "ROOT_PASSWORD": "root"
   },
   "test": {
     "DIALECT": "sqlite",
