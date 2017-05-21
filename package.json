@@ -1,6 +1,6 @@
 {
   "name": "pon-scaffold",
-  "version": "2.0.10",
+  "version": "2.0.11",
   "description": "Scaffold generator for pon",
   "main": "lib",
   "bin": {
