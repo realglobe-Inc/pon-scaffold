@@ -12,20 +12,16 @@ const {
   AppCtrl
 } = require('../controllers')
 const pkg = require('../../package.json')
-const env = require('../env')
 
 /** @lends create */
-function create (config) {
-  let { locales, db, redis = env.redis } = config
+function create ({ locales, db }) {
   let server = theServer({
     static: [ 'public' ],
-    redis,
     injectors: {
       client: (ctx) => createClient(),
       store: (ctx) => createStore()
     },
     html: Html,
-    langs: Object.keys(locales),
     scope: {
       pkg,
       db,

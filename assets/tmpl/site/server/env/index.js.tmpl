@@ -1,15 +1,10 @@
 'use strict'
 
 const theEnv = require('the-env')
-const Infra = require('../../Infra.json')
 
-let config = {
+const env = theEnv({
   port: require('./port'),
-  database: require('./database'),
-  redis: require('./redis')
-}
+  database: require('./database')
+}).forEnv()
 
-const vars = { Infra }
-
-const env = theEnv(config, { vars }).forEnv()
 module.exports = env
