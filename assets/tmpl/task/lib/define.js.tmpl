@@ -6,14 +6,10 @@
  */
 'use strict'
 
-const co = require('co')
-
 /** @lends define */
 function define (options = {}) {
-  function task (ctx) {
-    return co(function * () {
+  async function task (ctx) {
 
-    })
   }
 
   return Object.assign(task,
@@ -23,5 +19,3 @@ function define (options = {}) {
 }
 
 module.exports = define
-
-
