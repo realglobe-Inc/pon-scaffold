@@ -10,7 +10,7 @@ process.chdir(`${__dirname}/..`)
 
 const path = require('path')
 const fs = require('fs')
-const co = require('co')
+
 const apeTasking = require('ape-tasking')
 const filemode = require('filemode')
 const tmplconv = require('tmplconv')
@@ -23,13 +23,13 @@ const demos = {
 let prefix = '~~~~'
 let suffix = '~~~~'
 apeTasking.runTasks('tmplify', [
-  () => co(function * () {
+  async () => {
     for (let type of Object.keys(demos)) {
-      let demoName = demos[ type ]
+      let demoName = demos[type]
       let demoDir = path.dirname(require.resolve(`${demoName}/package.json`))
       let demoPkg = require(`${demoName}/package.json`)
       let tmplDir = `assets/tmpl/${type}`
-      yield tmplconv.tmplify(demoDir, tmplDir, {
+      await tmplconv.tmplify(demoDir, tmplDir, {
         clean: true,
         mode: '444',
         pattern: [
@@ -53,11 +53,11 @@ apeTasking.runTasks('tmplify', [
           'author_name': demoPkg.author.name,
           'author_email': demoPkg.author.email,
           'author_url': demoPkg.author.url
-        }, require('../lib/data')[ type ] || {}),
+        }, require('../lib/data')[type] || {}),
         prefix,
         suffix
       })
-      yield tmplconv.tmplify(`${__dirname}/..`, tmplDir, {
+      await tmplconv.tmplify(`${__dirname}/..`, tmplDir, {
         pattern: [
           '.gitignore'
         ],
@@ -90,14 +90,14 @@ apeTasking.runTasks('tmplify', [
           engines: pkg.engines,
           publishConfig: pkg.publishConfig
         }
-        for (let name of Object.keys(newPkg)) {
-          if (!newPkg[ name ]) {
-            delete newPkg[ name ]
+        for (const name of Object.keys(newPkg)) {
+          if (!newPkg[name]) {
+            delete newPkg[name]
           }
         }
         fs.writeFileSync(filename, JSON.stringify(newPkg, null, 2))
-        yield filemode(filename, '444')
+        await filemode(filename, '444')
       }
     }
-  })
+  }
 ], true)
