@@ -33,25 +33,25 @@
     "tmplconv": "^3.0.9"
   },
   "devDependencies": {
-    "ababel": "^2.0.1",
+    "ababel": "^4.0.1",
     "ababel-es2015": "^2.0.1",
     "amocha": "^4.0.0",
     "ape-formatting": "^1.0.2",
     "ape-releasing": "^4.0.4",
     "ape-tasking": "^4.0.9",
-    "ape-tmpl": "^6.0.2",
+    "ape-tmpl": "^6.0.8",
     "ape-updating": "^4.1.1",
     "coz": "^6.0.20",
+    "filecopy": "latest",
     "injectmock": "^2.0.0",
     "pon-assets": "^1.1.5",
-    "pon-demo-site": "^2.0.1",
-    "pon-demo-task": "^3.0.3",
-    "react": "^16.0.0",
-    "react-dom": "^16.0.0",
+    "pon-demo-site": "^2.1.6",
+    "pon-demo-task": "^3.0.6",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
     "react-router-dom": "^4.1.2",
     "sg-templates": "^1.4.4",
-    "sugos-travis": "^2.0.7",
-    "filecopy": "latest"
+    "sugos-travis": "^2.0.7"
   },
   "engines": {
     "node": ">=8",

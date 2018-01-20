@@ -20,8 +20,8 @@ describe('define', function () {
   })
 
   it('Define', async () => {
-    let ctx = ponContext()
-    let task = define({})
+    const ctx = ponContext({})
+    const task = define({})
     ok(task)
 
     await Promise.resolve(task(ctx))
