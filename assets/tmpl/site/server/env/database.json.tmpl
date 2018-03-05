@@ -1,23 +1,23 @@
 {
   "default": {
+    "DATABASE": "~~~~package_name@cramcase~~~~_dev",
     "DIALECT": "mysql",
     "HOST": "localhost",
-    "PORT": "#{Local.MYSQL_PUBLISHED_PORT}",
-    "DATABASE": "~~~~package_name@cramcase~~~~_dev",
-    "USERNAME": "~~~~package_name@cramcase~~~~_dev",
     "PASSWORD": "~~~~package_name@cramcase~~~~_dev",
+    "PORT": "#{Local.MYSQL_CONTAINER_PORT}",
+    "ROOT_PASSWORD": "root",
     "ROOT_USERNAME": "root",
-    "ROOT_PASSWORD": "root"
+    "USERNAME": "~~~~package_name@cramcase~~~~_dev"
   },
   "production": {
+    "DATABASE": "~~~~package_name@cramcase~~~~",
     "DIALECT": "mysql",
     "HOST": "localhost",
-    "PORT": "#{Local.MYSQL_PUBLISHED_PORT}",
-    "DATABASE": "~~~~package_name@cramcase~~~~",
-    "USERNAME": "~~~~package_name@cramcase~~~~",
     "PASSWORD": "~~~~package_name@cramcase~~~~",
+    "PORT": "#{Local.MYSQL_CONTAINER_PORT}",
+    "ROOT_PASSWORD": "root",
     "ROOT_USERNAME": "root",
-    "ROOT_PASSWORD": "root"
+    "USERNAME": "~~~~package_name@cramcase~~~~"
   },
   "test": {
     "DIALECT": "sqlite",
