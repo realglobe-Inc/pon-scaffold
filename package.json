@@ -29,7 +29,7 @@
     "askconfig": "^4.0.1",
     "co": "^4.6.0",
     "filemode": "^2.0.3",
-    "gitconfig": "^2.0.3",
+    "gitconfig": "^2.0.4",
     "tmplconv": "^3.0.9"
   },
   "devDependencies": {
@@ -50,7 +50,7 @@
     "pon-demo-task": "^3.0.7",
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
-    "react-router-dom": "^4.1.2",
+    "react-router-dom": "^4.3.1",
     "sg-templates": "^1.4.4",
     "sugos-travis": "^2.0.7"
   },
