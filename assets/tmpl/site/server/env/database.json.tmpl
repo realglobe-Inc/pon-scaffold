@@ -1,18 +1,20 @@
 {
   "default": {
     "DATABASE": "~~~~package_name@cramcase~~~~_dev",
-    "DIALECT": "mongo",
+    "DIALECT": "mysql",
     "HOST": "localhost",
-    "PASSWORD": "root",
-    "PORT": "#{Local.MONGO_CONTAINER_PORT}",
-    "USERNAME": "root"
+    "PASSWORD": "~~~~package_name@cramcase~~~~_dev",
+    "PORT": "#{Local.MYSQL_CONTAINER_PORT}",
+    "ROOT_PASSWORD": "root",
+    "ROOT_USERNAME": "root",
+    "USERNAME": "~~~~package_name@cramcase~~~~_dev"
   },
   "production": {
     "DATABASE": "~~~~package_name@cramcase~~~~",
-    "DIALECT": "mongo",
+    "DIALECT": "mysql",
     "HOST": "localhost",
     "PASSWORD": "~~~~package_name@cramcase~~~~",
-    "PORT": "#{Local.MONGO_CONTAINER_PORT}",
+    "PORT": "#{Local.MYSQL_CONTAINER_PORT}",
     "ROOT_PASSWORD": "root",
     "ROOT_USERNAME": "root",
     "USERNAME": "~~~~package_name@cramcase~~~~"

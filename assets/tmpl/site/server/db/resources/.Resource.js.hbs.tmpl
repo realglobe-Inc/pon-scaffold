@@ -1,16 +1,14 @@
 /**
-* @class {{name}}
-* @augments Resource
-*/
+ * @class {{name}}
+ * @augments Resource
+ */
 'use strict'
 
-const {
-  TheResource,
-  DataTypes: {STRING, ENTITY},
-} = require('the-resource-base')
+const { Resource, DataTypes } = require('the-db')
+const { STRING, ENTITY } = DataTypes
 
 /** @lends {{name}} */
-class {{name}} extends TheResource {
+class {{name}} extends Resource {
   static get policy () {
     return {
       name: {
@@ -26,10 +24,12 @@ class {{name}} extends TheResource {
 
   static entityClass (ResourceEntity) {
     /** @class */
-    class {{name}}Entity extends ResourceEntity {
+    class The{{name}}Entity extends ResourceEntity {
     }
-    return {{name}}Entity
+    return The{{name}}Entity
   }
 }
+
+Object.assign({{name}}, {})
 
 module.exports = {{name}}
