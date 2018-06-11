@@ -4,10 +4,10 @@
  */
 'use strict'
 
-const {TheCtrl} = require('the-controller-base')
+const Ctrl = require('./Ctrl')
 
 /** @lends AppCtrl */
-class AppCtrl extends TheCtrl {
+class AppCtrl extends Ctrl {
 
   // TODO Remove this
   // Just an example
@@ -16,7 +16,7 @@ class AppCtrl extends TheCtrl {
     let {count = 0} = session
     session.count = count + 1
     await new Promise((resolve) => setTimeout(() => resolve(), 1000))
-    return count
+    return session.count
   }
 }
 
