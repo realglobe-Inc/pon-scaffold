@@ -13,7 +13,7 @@ const {
   fs: {chmod, concat, cp, del, mkdir, symlink, write},
 } = require('pon-task-basic')
 const db = require('pon-task-db')
-const {mongo, nginx, redis} = require('pon-task-docker')
+const {mysql, nginx, redis} = require('pon-task-docker')
 const es = require('pon-task-es')
 const pm2 = require('pon-task-pm2')
 const {browser, ccjs, css, map, react} = require('pon-task-web')
@@ -94,8 +94,8 @@ module.exports = pon(
     // Sub Tasks for Docker
     // -----------------------------------
     ...{
-      /** Prepare mongo docker container */
-      'docker:mongo': mongo(Containers.mongo.name, Containers.mongo.options),
+      /** Prepare mysql docker container */
+      'docker:mysql': mysql(Containers.mysql.name, Containers.mysql.options),
       /** Prepare nginx docker container */
       'docker:nginx': nginx(Containers.nginx.name, Containers.nginx.options),
       /** Prepare redis docker container */
@@ -158,7 +158,7 @@ module.exports = pon(
       'pkg:install': npm('install', '--ignore-scripts'),
       /** Link self packages */
       'pkg:link': symlink({
-        'Local.js': 'node_modules/@self/Local',
+        'Local.js': 'node_modules/@self/Local.js',
         'assets/data': 'node_modules/@self/data',
         'client': 'node_modules/@self/client',
         'shim/conf': 'node_modules/@self/conf',
@@ -186,6 +186,9 @@ module.exports = pon(
       'prod:compile': ['env:prod', 'build', 'prod:map', 'prod:css', 'prod:js',],
       /** Compile css files for production */
       'prod:css': css.minify([
+        `public${Urls.CSS_NORMALIZE_URL}`,
+        `public${Urls.CSS_THEME_URL}`,
+        `public${Urls.CSS_FONT_URL}`,
         `public${Urls.CSS_BUNDLE_URL}`,
       ], `public${Urls.PRODUCTION_CSS_URL}`),
       /** Prepare database for production */
@@ -337,7 +340,7 @@ module.exports = pon(
       /** Generate docs */
       doc: 'doc:*',
       /** Setup docker infra */
-      docker: ['docker:redis/run', 'docker:mongo/run', 'docker:nginx/run'],
+      docker: ['docker:redis/run', 'docker:mysql/run', 'docker:nginx/run'],
       /** Show app daemon logs */
       logs: ['pm2:app/logs'],
       /** Prepare project */
