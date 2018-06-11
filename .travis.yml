@@ -2,22 +2,18 @@ language: node_js
 node_js:
 - '8'
 before_install:
- - npm i npm-cli-login -g
- - npm-cli-login -u "${NPM_USER}" -p "${NPM_PASSWORD}" -e "${NPM_EMAIL}"
- - npm who
+- echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > .npmrc
+- npm install jsdoc publish-if-needed npm@latest -g
 install:
 - npm install
-before_script:
-- npm link .
 script:
-- ./ci/tmplify.js
-- ./ci/build.js
-- ./ci/test.js
+- "./ci/build.js"
+- "./ci/shim.js"
+- "./ci/doc.js"
+- "./ci/test.js"
 after_success:
-- ./ci/travis/commit_push.js
-- ./ci/travis/publish.js
-
-after_success:
-- ./ci/travis/publish.js
+- publish-if-needed
 env:
-  secure: "UZWL+K4gPYgdLbzGA/5uV8rfw8Y+VZj2Q3B1VM2yI6t+RMheyuuc9EcYrf4ElwsxjCsWHbXEVWvTxWNVIxHWz/h5H2QRuCf8PhNvPDLVup017/nFdaP68mJ0o51ceW8JZMSwr9hUGHhcqti/Z0nolf9l8k6syxhaPeqXIldG8NeW+/tL8qLYIRA4oDiaE6m3v6+enlVMRWW6ya3mcRHbPXbvTixrefNY2ldMbk2ioK7xecKX/bA2B6eoV9Nk79DpIkFhTBH895y3Cz4qdEHxFT6uS5/7qFTHBVTMy542d8RWHRMU31RLFSJRTRJ2QYjdnWzk/nOV2Q9NqvNifUVK0fuewUeB5fz+1Gx8+gsyjWPSf+uMuFjgjcSybMKz6Kv3UJ2ltTWPRgklCCwTlu4QZ9jJTuiNgeSyIN54DoK5Y2M/aO9w8WVRq/OkFr7I7KHIi6Zr6FRfqZou0b1kTOdp4Q+kk/vBd9ep/WBI6DwtRv6ZmSvBMnZdZRJAhU5KE9cy8sl3SPzjpWss9mKTEcNKbwgRJZLvXulvV3kJvKD1llEMC0QXp3ZzR3YmLfYcaPmPNTR3fyRAtzDpzEzRjDGiWfgcqvZy9Biz5LaUHN00IXWXSLnMMXABb/mbyHENJ+smwLw+04ZREzSfoxEv0/96EyUeCK+t8BRvoFzWgX3gM/k="
+  global:
+  - secure: nCgHdRm904VynsRHxOBUxP6hqol/0CSz5z2N/L7uUyDk1z+Z8nt5uDrd9rHsVjVnBMHmqG+/10O2cQff/jrXJ8/4O3EDjtQy4EWcjFBF7hI65QNuJK3q9JOZjHT19z9XwbWVrnxOBXRbDDZJrdWeLzxt3TFhdfUll19xbwh1afdZ9VTJIWeXwcNyykZYOnhizjvz2kgK4t9kJ5XO/3oofGV8XW47ogkzU/tNiHET1ggWyeN8NFjMv7J+EJ/JnprJ34bkdCVSaN5Tqt1KK3IQmYVS0WUqi0tHYAa/pyzDrPTzBkxt468XH2rvMemyD23SZcFBYdTzCs1mmldnIpvwzuNDyT3V/FSeE2kjYUIK3lQIa+b4KgJI313/QRWlBTcA2iSH5HADuty2mC+BfOX0psG/TvFtNAtHx4JfrB0eRmxkAxpkeu85ik0r7PVOi8yXKR4QODYSaTSJsxI6BgHoYb2bXDUy6tFUo/AHJtp8HBG5QOgicc/er0pWHtGa8V/NYAVCSkPosiOy+R6VUfkZbg7yXuoQIxwhTw1D6oZ95xVffcZ5RjWkF9GrCkcXium1xZk2dSdAFTpryyNYsPrgjMrvRdepueJRM6MqnbqGViER4QgJoftw64psBewCgWpJVqUGWtMGm/btte8rWm1Iqr6XkFGs6kiFmz4zOd/7NuE=
+  - secure: eeJsW7uSRMY2Hfn7jc8kXsuLlRFnNKmR/Mag8JU/tTO41envZ926gjmy6EfMqDb6wBktK0+EXK4Wf4nfhrwPLz8pG4SmFYBNd1vuepSdSUb7HdINWZFXCchXJSwcmUch6Zo0OSVodlb5amRXUiG/Gtrl/7j2dMBqx6y2zfs7X2HSuizKqgnF1FSZjQtgcPjE1VcqoqXo8aQGtqqcJASHcvxvmzupK8Afe6VkJptJd/P449I1lvEYM+Brdh+AYMLjo1wXXAlNQLbbj+ESg8a1G0z+WaKQBYb+N52iC0bYMFKtvA1GCGYBFc12n9TlNLoX28AQgtV26TO1oGKdF+Tedc5FX2ayKnBXiMSW6nWsC6JpZaUfaLC/UI8HHkJ+X5EjLCkuUJ1oRJ2Ds2g1+Uydj0bTs+ao/dm0WcV/6EVwuHYcBdX0mhGA5ZrUxVP1eexHeFaBiPG7k/FJ6aFrucSWB2xC4z7gP8x9rX8KHQWxvvGdyKu15XC2TCZksxCNCMWg8nf3e+FL9yfMJlwS7oFS3/mBgPBf+JvnkxQT1oMrDzP0NBLCSmiIy1jgGMDIIUJ14p19ClPvzxgiZuXcAvcEuOerUJRiZVhIZ9Z09UcaDaIZ/KjtJkNUQNb6chh3hcx3t+admhCSbJ1LD3MZSO2mIfW5SLqsSbId5of2YZ8g+QQ=

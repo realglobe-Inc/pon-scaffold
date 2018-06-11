@@ -1,6 +1,6 @@
 {
   "name": "pon-scaffold",
-  "version": "4.0.7",
+  "version": "4.0.9",
   "description": "Scaffold generator for pon",
   "main": "lib",
   "bin": {
@@ -46,16 +46,15 @@
     "filecopy": "^4.0.1",
     "injectmock": "^2.0.0",
     "pon-assets": "^1.1.5",
-    "pon-demo-site": "^4.0.3",
+    "pon-demo-site": "^4.1.2",
     "pon-demo-task": "^3.0.7",
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
     "react-router-dom": "^4.3.1",
-    "sg-templates": "^1.4.4",
-    "sugos-travis": "^2.0.7"
+    "sg-templates": "^1.4.4"
   },
   "engines": {
     "node": ">=8",
-    "npm": ">=4"
+    "npm": ">=5"
   }
 }

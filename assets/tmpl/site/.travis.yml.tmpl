@@ -1,19 +1,19 @@
 language: node_js
 services:
 - docker
+- mongo
 node_js:
-- '8'
+- '10.0'
 before_install:
-- npm install pm2 pon jsdoc -g
-- npm i npm-cli-login -g
-- npm-cli-login -u "${NPM_USER}" -p "${NPM_PASSWORD}" -e "${NPM_EMAIL}"
-- rm -rf var
+- echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > .npmrc
+- npm install publish-if-needed npm@latest pm2 pon jsdoc -g
 install:
 - npm install
 script:
 - pon prepare
 - pon build
 after_success:
-- ./misc/travis/publish.js
+- publish-if-needed
 env:
-  secure: "yMnOq7ZPG7U10/uTK6TsTclnWLXv2VGlWhv89GAyyawrXESAEf/2IJx0i3JcF6mDkQmUYfDAt9ltBEuYaYRTzwPaV5IMabADLlzq8kGlHIX84M5XWwBVwdy0KvCKVcEYU3KJDNVxK+FsOCu2i7sP3pIcsB9uhC2FQ728x4koDRJzhK5C80YUacdpbxECrnqiHboEkYLbqleqmGEjNwjPnXWMeXFx/levPX18D3nBfpi8KkNFS4iBrO3C4/Wxmkyv1AoSBaDL35jgSo8E2m5UQDIPjt7VsqG1iGIdCLNM8Mwh6aPcSWIpFThxwzKyu7dTXoEycfNvdEgQEXLlypt09c9TlOaZxHlkjJkpXfvVCtR3baxabsbYs1+cTmM1W8YwlwaqvAh12sLPgNucP4md+h5E928FgObHvwlNhQjS6TWih83LiVd0T5W9Z2iFIlL9ddWLwkMDOaGvxp9KDdQNcP8nC8lUq7tfslelZYmIW+OOt4liBY7CrL3WxRbdE6IFty3En6lLUZMC+bqZJF5aEUtAugPK06W0bdONaNA8nIQZvjocMFScpvErbIQTc4YuP/Q1zbraWW0aLzNMQrsWLECZ1P6Nn/4ww2t8bmmitje7BOmKFU/lUM4Sqf+fyvR3M1M2dNDjn12ThLMfgAdJQJRdOsuuxczFqUbmrXlui3g="
+  global:
+  - secure: gNYS1h6KidtzKjyXWyKdW0cGX4lyvBGWyLg8YznalzFSj1o/kTdNQ/ghu0Lg2BfKYYCchvs6eXqlVMy/lJbk0st5SqLSgaHAGsAlxet1CBR2PgOy1t3zspekxyYtqwgZj/wOWqH8PbFodtuBnTVVHypwViGVo3BR5/kPCTbXNJOxSC7pcd2j/+2F0rTQ2ABoBh1XHfinRFF797+lV119RJTfMQ+XGxGVdooXl9pmVqqsTQpSQ27dBP2dY41iI0g4BKMnR4MYo90pkZV/TyhPMfvWBS6yZLWRvuGZiIBRxjwgvVInXmABN8DbP6jR28ycjb0h5UO/z/jmTUrzZDHdqZZ19VBjytlTBFNwJQyYcXhEyQWEQ/GyBEM2QHwKXEI43SacJdxVtwjSfKDtSDewO5NpgIm3BwCpZkaLWND30rRs1gW7x/qpLzRhiHl8bFS8z0eV0h9rA9omYeuwGbd0Ls9o1Z8n0dYIaObrYBFRy01yHX7nZ/vltEleC3NtvXFRWWdn51T3V4mwVEK7ttnQ7sxUBL/TDZmrZtFmlcgWdD0KGBZCBfnCs7Z08CE7h27cx1hYwTc4M48kIBmQecTLK+aGd7TRPFQGxOTgsTrL/sC4dg0Tek7Mp/FDMxvSDQGf25sxsWh+U3gTvJ8bDBZDzc/LCoDzc19/hYDs0ajIjY4=
