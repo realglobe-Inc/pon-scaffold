@@ -1,6 +1,6 @@
 {
   "name": "pon-scaffold",
-  "version": "4.0.10",
+  "version": "4.0.11",
   "description": "Scaffold generator for pon",
   "main": "lib",
   "bin": {
@@ -45,7 +45,7 @@
     "filecopy": "^4.0.1",
     "injectmock": "^2.0.0",
     "pon-assets": "^1.1.5",
-    "pon-demo-site": "^5.0.1",
+    "pon-demo-site": "^5.0.2",
     "pon-demo-task": "^3.0.7",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
