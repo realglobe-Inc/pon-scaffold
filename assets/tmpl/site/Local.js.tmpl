@@ -4,9 +4,9 @@
  */
 'use strict'
 
-const theSeat = require('the-seat').default
-const theSecret = require('the-secret').default
-const theSetting = require('the-setting').default
+const theSeat = require('the-seat')
+const theSecret = require('the-secret')
+const theSetting = require('the-setting')
 const {seatAccess} = require('the-site-util')
 const {inspect} = require('util')
 const pkg = require('./package')
@@ -37,6 +37,7 @@ const Vars = Object.freeze(
   {
     APP_PORT: portNumberFor(`app@${__dirname}`),
     APP_PROCESS_NAME: processNameFor(`${pkg.name}@${__dirname}`) + '-app',
+    APP_VERSION: pkg.version,
     BACKUP_PROCESS_NAME: processNameFor(`${pkg.name}@${__dirname}`) + '-backup',
     INSPECT_PORT: portNumberFor(`inspect@${__dirname}`),
     MONGO_CONTAINER_NAME: containerNameFor(`${pkg.name}-mongo@${__dirname}`),
