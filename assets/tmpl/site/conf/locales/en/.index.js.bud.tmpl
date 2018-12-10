@@ -1,12 +1,15 @@
 'use strict'
 
 const { dir } = require('the-templates')
+const path = require('path')
+
+const name = path.basename(__dirname)
 
 module.exports = dir({
-  cjs: true,
-  description: 'Project configurations',
   dirname: __dirname,
-  name: 'conf',
+  name,
+  cjs: true,
+  description: `${name} locales`
 })
 
 if (!module.parent) {

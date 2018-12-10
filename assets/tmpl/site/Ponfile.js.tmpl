@@ -13,7 +13,7 @@ const {
   fs: { chmod, concat, cp, del, mkdir, symlink, write },
 } = require('pon-task-basic')
 const db = require('pon-task-db')
-const { mongo, nginx, redis } = require('pon-task-docker')
+const docker = require('pon-task-docker')
 const es = require('pon-task-es')
 const pm2 = require('pon-task-pm2')
 const { browser, ccjs, css, map, react } = require('pon-task-web')
@@ -91,12 +91,12 @@ module.exports = pon(
     // Sub Tasks for Docker
     // -----------------------------------
     ...{
-      /** Prepare mongo docker container */
-      'docker:mongo': mongo(Containers.mongo.name, Containers.mongo.options),
+      /** Prepare mysql docker container */
+      'docker:mysql': docker.mysql(Containers.mysql.name, Containers.mysql.options),
       /** Prepare nginx docker container */
-      'docker:nginx': nginx(Containers.nginx.name, Containers.nginx.options),
+      'docker:nginx': docker.nginx(Containers.nginx.name, Containers.nginx.options),
       /** Prepare redis docker container */
-      'docker:redis': redis(Containers.redis.name, Containers.redis.options),
+      'docker:redis': docker.redis(Containers.redis.name, Containers.redis.options),
     },
 
     // -----------------------------------
@@ -286,7 +286,7 @@ module.exports = pon(
         css('public/build', 'public/build', { pattern: '*.pcss' }),
         css('assets/css', 'public/css', { pattern: '*.css' }),
       ],
-      /** Run css watch */
+      /** Run ws css watch */
       'ui:css/watch': 'ui:css/*/watch',
       /** Compile react components */
       'ui:react': react('client', 'client/shim', {
@@ -295,6 +295,11 @@ module.exports = pon(
         sourceRoot: '..',
         watchTargets: 'client/ui/**/*.pcss',
       }),
+      'ui:workers': env.dynamic(({ isProduction }) =>
+        browser.all('./client/shim/workers', `public`, {
+          version: Local.APP_VERSION,
+        }), { sub: ['watch'] }
+      ),
     },
 
     // -----------------------------------
@@ -318,14 +323,14 @@ module.exports = pon(
         'git:catchup',
         'pkg:install',
         'prod',
-        'db:seed',
         'db:migrate',
+        'db:seed',
         'maint:off',
       ],
       /** Generate docs */
       doc: 'doc:*',
       /** Setup docker infra */
-      docker: ['docker:redis/run', 'docker:mongo/run', 'docker:nginx/run'],
+      docker: ['docker:redis/run', 'docker:mysql/run', 'docker:nginx/run'],
       /** Show app daemon logs */
       logs: ['pm2:app/logs'],
       /** Prepare project */
@@ -355,7 +360,7 @@ module.exports = pon(
       /** Run all struct tasks */
       struct: ['struct:mkdir', 'struct:compile', 'struct:cp', 'struct:pkg', 'struct:render', 'struct:chmod',],
       /** Run all ui tasks */
-      ui: ['ui:css', 'ui:react', 'ui:browser'],
+      ui: ['ui:css', 'ui:react', 'ui:browser', 'ui:workers'],
     },
 
     // -----------------------------------
