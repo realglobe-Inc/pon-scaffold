@@ -45,7 +45,7 @@
     "filecopy": "^4.0.1",
     "injectmock": "^2.0.0",
     "pon-assets": "^1.1.5",
-    "pon-demo-site": "^6.3.2",
+    "pon-demo-site": "^7.0.0",
     "pon-demo-task": "^3.0.7",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
