@@ -8,14 +8,12 @@ const { equal, ok } = require('assert')
 const createDB = require('../db/create')
 
 describe('db', () => {
-  before(() => {
-  })
+  before(() => {})
 
-  after(() => {
-  })
+  after(() => {})
 
   it('Do test', async () => {
-    const db = createDB()
+    const db = createDB.forTest()
     ok(db)
 
     const { Room } = db.resources
