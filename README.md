@@ -99,7 +99,7 @@ ponScaffold(
 
 <!-- Section from "doc/guides/03.CLI.md.hbs" Start -->
 
-<a name="section-doc-guides-03-c-l-i-md"></a>
+<a name="section-doc-guides-03-cli-md"></a>
 
 CLI Usage
 ---------

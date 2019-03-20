@@ -8,7 +8,6 @@
 const pon = require('pon')
 const {
   command: {
-    fork,
     spawn: { npm, npx },
   },
   fs: { del },
@@ -105,6 +104,14 @@ module.exports = pon(
     },
 
     // -----------------------------------
+    // Sub Tasks for ESLint
+    // -----------------------------------
+    ...{
+      'eslint:check': npx('eslint', '--ext', '.js,.jsx', '.'),
+      'eslint:fix': npx('eslint', '--fix', '--ext', '.js,.jsx', '.'),
+    },
+
+    // -----------------------------------
     // Sub Tasks for Format
     // -----------------------------------
     ...{
@@ -113,14 +120,23 @@ module.exports = pon(
         [
           'client/ui/**/*.pcss',
           'client/ui/**/*.jsx',
-          'client/scenes/**/*.js',
-          'client/+(mappings|ui|scenes|scopes|client|workers)/**/.*.bud',
+          'client/**/.*.bud',
+          'client/**/*.js',
         ],
-        { ignore: 'client/**/index.*' },
+        {
+          ignore: ['client/**/index.*', 'client/shim/**/*.*'],
+        },
       ),
       /** Format conf files */
       'format:conf': theCode(
-        ['Local.js', 'Ponfile.js', 'Ponfile.*.js', 'conf/*.js', 'conf/.*.bud'],
+        [
+          'Local.js',
+          'Ponfile.js',
+          'Ponfile.*.js',
+          'conf/*.js',
+          'conf/.*.bud',
+          '.*.bud',
+        ],
         { ignore: 'conf/index.js' },
       ),
       /** Format json files */
@@ -198,6 +214,8 @@ module.exports = pon(
       docker: ['docker:redis/run', 'docker:mysql/run', 'docker:nginx/run'],
       /** Format source codes */
       format: ['format:conf', 'format:json', 'format:client', 'format:server'],
+      /** Apply lint */
+      lint: ['eslint:fix', 'eslint:check'],
       /** Open project */
       open: 'open:app',
       /** Prepare project */
