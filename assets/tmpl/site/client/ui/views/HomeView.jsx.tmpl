@@ -4,7 +4,7 @@
 'use strict'
 
 import React from 'react'
-import { TheButton, TheCycle, TheMeta, TheView } from 'the-components'
+import { TheButton, TheCycle, TheMeta, TheView } from '@the-/ui'
 import styles from './HomeView.pcss'
 import context from '../context'
 
@@ -14,14 +14,14 @@ class HomeView extends React.Component {
       busy: state['home.busy'],
       count: state['home.count'],
     }),
-    ({ l, toastScene, homeScene }, pipedProxy) => ({
+    ({ homeScene, l, toastScene }, pipedProxy) => ({
       onCountUp: async () => {
         await homeScene.countUp()
         await toastScene.showInfo(l('toasts.COUNT_UP_DID_SUCCESS'))
         console.log('new Count:', pipedProxy.count)
       },
-      onReceive: async (received) => {},
       onMount: async () => {},
+      onReceive: async () => {},
       onUnmount: async () => {},
     }),
   )

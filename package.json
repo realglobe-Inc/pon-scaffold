@@ -1,6 +1,6 @@
 {
   "name": "pon-scaffold",
-  "version": "4.0.26",
+  "version": "4.0.27",
   "description": "Scaffold generator for pon",
   "main": "lib",
   "bin": {
@@ -30,26 +30,26 @@
     "co": "^4.6.0",
     "filemode": "^3.0.0",
     "gitconfig": "^2.0.8",
-    "tmplconv": "^3.0.9"
+    "tmplconv": "^5.0.1"
   },
   "devDependencies": {
-    "ababel": "*",
-    "amocha": "*",
-    "ape-formatting": "*",
+    "ababel": "^6.0.0",
+    "amocha": "^6.0.0",
+    "ape-formatting": "^2.0.2",
     "ape-releasing": "^5.0.7",
     "ape-tasking": "^4.0.12",
-    "ape-tmpl": "*",
+    "ape-tmpl": "^6.0.14",
     "ape-updating": "^5.0.3",
-    "coz": "*",
-    "eslint": "*",
+    "coz": "^7.0.19",
+    "eslint": "^5.16.0",
     "filecopy": "^4.0.2",
     "injectmock": "^2.0.0",
     "pon-assets": "^1.1.5",
-    "pon-demo-site": "*",
+    "pon-demo-site": "^8.0.0",
     "pon-demo-task": "^3.0.7",
-    "react": "*",
-    "react-dom": "*",
-    "react-router-dom": "*",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-router-dom": "^5.0.0",
     "sg-templates": "^1.4.4"
   },
   "engines": {

@@ -19,9 +19,10 @@ const docker = require('pon-task-docker')
 const es = require('pon-task-es')
 const pm2 = require('pon-task-pm2')
 const { browser, ccjs, css, react } = require('pon-task-web')
-const theAssets = require('the-assets')
-const theBin = require('the-bin/pon')
-const thePS = require('the-ps/pon')
+const theAssets = require('@the-/assets')
+const theBin = require('@the-/bin/pon')
+const { isProduction } = require('@the-/check')
+const thePS = require('@the-/ps/pon')
 const { Urls, locales } = require('./conf')
 const Local = require('./Local')
 const Containers = require('./misc/docker/Containers')
@@ -187,8 +188,17 @@ module.exports = pon(
     // Sub Tasks for Production
     // -----------------------------------
     ...{
+      /** Cleanup build files */
+      'prod:clean': del('public/build/**/*.*'),
       /** Compile files for production */
-      'prod:compile': ['env:prod', 'build', 'prod:map', 'prod:css', 'prod:js'],
+      'prod:compile': [
+        'env:prod',
+        'prod:clean',
+        'build',
+        'prod:map',
+        'prod:css',
+        'prod:js',
+      ],
       /** Compile css files for production */
       'prod:css': css.minify(
         [`public${Urls.CSS_BUNDLE_URL}`],
@@ -208,8 +218,6 @@ module.exports = pon(
     ...{
       /** Process check for debug */
       'ps:debug': thePS('var/app/debug.pid'),
-      /** Process check for e2e */
-      'ps:e2e': thePS('var/app/e2e.pid'),
     },
 
     // -----------------------------------
@@ -266,7 +274,7 @@ module.exports = pon(
         coz(
           [
             '+(conf|client|server)/**/.index.*.bud',
-            '+(assets|e2e|bin|client|conf|doc|misc|server|test|utils)/**/.*.bud',
+            '+(assets|bin|client|conf|doc|misc|server|test|utils)/**/.*.bud',
             '.*.bud',
           ],
           {},
@@ -282,15 +290,16 @@ module.exports = pon(
         () =>
           browser(
             {
-              bundle: './client/shim/ui/entrypoint.js',
+              bundle: 'ui/entrypoint.js',
             },
             `public/build/[name].js`,
             {
-              split: true,
-              splitName: 'external',
+              context: `${__dirname}/client/shim`,
+              devtool: isProduction() ? false : 'cheap-source-map',
+              publicPath: `${Urls.JS_CHUNK_BASE_URL}/`,
             },
           ),
-        { sub: ['watch'] },
+        { sub: ['watch', 'analyze'] },
       ),
       /** Compile stylesheets */
       'ui:css': [
@@ -324,9 +333,11 @@ module.exports = pon(
         watchTargets: 'client/ui/**/*.pcss',
       }),
       'ui:workers': env.dynamic(
-        ({ isProduction }) =>
-          browser.all('./client/shim/workers', `public`, {}),
-        { sub: ['watch'] },
+        () =>
+          browser.all('workers', `public`, {
+            context: `${__dirname}/client/shim`,
+          }),
+        { sub: ['watch', 'analyze'] },
       ),
     },
 
